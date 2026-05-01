@@ -1,77 +1,61 @@
-# 🚀 Lead Management System
+🚀 Lead Management System
 
-A full-stack Lead Management Dashboard built with **React, Node.js, Express, and PostgreSQL**.
+A full-stack Lead Management Dashboard built with React, Node.js, Express, and PostgreSQL.
 
-This project allows you to:
+It helps you capture, manage, and track leads with a modern UI and a scalable backend.
 
-* 📋 Add, update, and delete leads
-* 🔍 Search and filter leads
-* 📊 View lead stats (Total, Converted, New)
-* 🎯 Manage lead status dynamically
-* 💎 Experience a modern glassmorphism UI
-
----
-
-## 🛠 Tech Stack
-
-### Frontend
-
-* React + TypeScript
-* Tailwind CSS
-* shadcn/ui components
-* Lucide Icons
-
-### Backend
-
-* Node.js
-* Express.js
-
-### Database
-
-* PostgreSQL (pgAdmin / local or cloud)
-
----
-
-## 📁 Project Structure
-
-```
+✨ Features
+📋 Add, update, and delete leads
+🔍 Search and filter leads
+📊 Stats dashboard (Total, New, Converted)
+🎯 Dynamic lead status updates
+💎 Glassmorphism UI + Dark/Light theme
+⚡ Fast and responsive interface
+🛠 Tech Stack
+Frontend
+React + TypeScript
+Tailwind CSS
+shadcn/ui
+Lucide Icons
+Backend
+Node.js
+Express.js
+Database
+PostgreSQL
+📁 Project Structure
 project-root/
 │
-├── client/         # React frontend
-├── server/         # Node backend
+├── client/             # React frontend
+├── server/             # Node backend
+│   ├── index.js
+│   └── setup.sql       # Database setup
+│
 └── README.md
-```
-
----
-
-## ⚙️ Prerequisites
+⚙️ Prerequisites
 
 Make sure you have installed:
 
-* Node.js (v18+ recommended)
-* npm or yarn
-* PostgreSQL
-* pgAdmin (optional but helpful)
+Node.js (v18+ recommended)
+npm or yarn
+PostgreSQL
+pgAdmin (optional)
+🧩 STEP 1 — Clone Repository
+git clone https://github.com/sakshi0921-lab/crm-repo.git
+cd crm-repo
+🗄️ STEP 2 — Setup PostgreSQL Database
+🔹 Create Database
 
----
+Open PostgreSQL / pgAdmin and create:
 
-## 🧩 STEP 1 — Clone Repository
+leads_db
+🔹 Create Table
 
-```
-git clone https://github.com/yourusername/your-repo.git
-cd your-repo
-```
+Create a file:
 
----
+server/setup.sql
 
-## 🗄️ STEP 2 — Setup Database
+Paste:
 
-1. Open PostgreSQL / pgAdmin
-2. Create a new database (e.g., `leads_db`)
-
-Run this SQL:
-
-```
 CREATE TABLE leads (
   id SERIAL PRIMARY KEY,
   name TEXT NOT NULL,
@@ -81,146 +65,80 @@ CREATE TABLE leads (
   notes TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-```
-
----
-
-## ⚙️ STEP 3 — Setup Backend
-
-Go to backend folder:
-
-```
+🔹 Run SQL File
+psql -U postgres -d leads_db -f server/setup.sql
+⚙️ STEP 3 — Setup Backend
 cd server
 npm install
-```
-
-### Create `.env` file:
-
-```
+Create .env file
 DATABASE_URL=postgresql://username:password@localhost:5432/leads_db
 PORT=5000
-```
-
-### Start backend:
-
-```
+Start Backend
 node index.js
-```
 
 You should see:
 
-```
-Backend running 🚀
-```
+Server running on http://localhost:5000 🚀
 
-Test in browser:
+Test API:
 
-```
-http://localhost:5000/leads
-```
+👉 http://localhost:5000/leads
 
----
+💻 STEP 4 — Setup Frontend
 
-## 💻 STEP 4 — Setup Frontend
+Open a new terminal:
 
-Open new terminal:
-
-```
 cd client
 npm install
-```
-
-### Start frontend:
-
-```
 npm run dev
-```
 
 Open:
 
-```
-http://localhost:5173
-```
+👉 http://localhost:5173
 
----
-
-## 🔗 API Endpoints
-
-| Method | Endpoint   | Description        |
-| ------ | ---------- | ------------------ |
-| GET    | /leads     | Get all leads      |
-| POST   | /leads     | Add new lead       |
-| PUT    | /leads/:id | Update lead status |
-| DELETE | /leads/:id | Delete lead        |
-
----
-
-## 🧪 Example API Request
-
-### Add Lead
-
-```
+🔗 API Endpoints
+Method	Endpoint	Description
+GET	/leads	Get all leads
+POST	/leads	Add new lead
+PUT	/leads/:id	Update lead status
+DELETE	/leads/:id	Delete lead
+🧪 Example API Request
+Add Lead
 POST /leads
-```
-
-Body:
-
-```
 {
-  "name": "Sakshi",
+  "name": "XYZ",
   "phone": "9999999999",
   "source": "Call",
   "notes": "Interested user"
 }
-```
+🌐 Deployment
 
----
+You can deploy like this:
 
-## 🌐 Deployment (Optional)
-
-* Frontend → Netlify
-* Backend → Render
-* Database → Neon
-
----
-
-## ⚠️ Common Issues
-
-### ❌ CORS Error
+Frontend → Netlify / Vercel
+Backend → Render / Railway
+Database → Neon / Supabase
+⚠️ Common Issues
+❌ Database not connecting
+Check DATABASE_URL
+Ensure PostgreSQL is running
+Verify username/password
+❌ CORS Error
 
 Fix in backend:
 
-```
 app.use(cors());
-```
+❌ Port already in use
 
-### ❌ Database not connecting
+Change port in .env:
 
-* Check DATABASE_URL
-* Ensure PostgreSQL is running
-
-### ❌ Port already in use
-
-Change port in `.env`
-
----
-
-## 💡 Future Improvements
-
-* 🔐 Authentication (JWT)
-* 📈 Analytics dashboard
-* 📱 Mobile responsiveness improvements
-* ⚡ Real-time updates (WebSockets)
-
----
-
-## 👨‍💻 Author
+PORT=5001
+💡 Future Improvements
+🔐 Authentication (JWT)
+📈 Advanced analytics dashboard
+📱 Better mobile responsiveness
+⚡ Real-time updates (WebSockets)
+👨‍💻 Author
 
 Sakshi
 GitHub: https://github.com/sakshi0921-lab/crm-repo.git
-
----
-
-## ⭐ If you like this project
-
-Give it a star on GitHub ⭐
